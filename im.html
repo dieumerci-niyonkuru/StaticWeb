@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form with Inline Buttons</title>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: linear-gradient(135deg, #764c11c9, #b58215f1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+   
+    .login-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;  
+      background: #ecdfdf;
+      width: 720px;
+      border-radius: 2rem;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      animation: fadeIn 0.8s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to   { opacity: 1; transform: translateY(0);}
+    }
+
+    
+    .form-section {
+      padding: 2.5rem 2rem;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .form-section h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #4f46e5;
+    }
+    .form-section h2 {
+      margin-top: 0.3rem;
+      font-size: 1.2rem;
+      color: #555;
+    }
+    .form-section p#text {
+      color: #666;
+      margin: 1rem 0 2rem;
+      font-size: 0.95rem;
+    }
+
+    .form-section input[type="text"],
+    .form-section input[type="password"] {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+    .form-section input:focus {
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+      outline: none;
+    }
+
+    .password-wrapper {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    .password-wrapper button {
+      position: absolute;
+      top: 50%;
+      right: 0.75rem;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #666;
+      font-size: 1.1rem;
+      transition: color 0.2s;
+    }
+    .password-wrapper button:hover {
+      color: #4f46e5;
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    .options a {
+      color: #4f46e5;
+      text-decoration: none;
+    }
+    .options a:hover {
+      text-decoration: underline;
+    }
+   .button-row {
+      display: flex;
+      gap: 1rem;       
+    }
+    .button-row button {
+      flex: 1;         
+      padding: 0.75rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .button-row .signin {
+      background: #922d19;
+    }
+    .button-row .signin:hover {
+      background: #caa838;
+      transform: translateY(-2px);
+    }
+    .button-row .signup {
+      background: #9333ea;
+    }
+    .button-row .signup:hover {
+      background: #7e22ce;
+      transform: translateY(-2px);
+    }
+
+   
+    .image-section {
+      background: #000;
+    }
+    .image-section img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+  
+    @media (max-width: 768px) {
+      .login-card {
+        grid-template-columns: 1fr;
+      }
+      .image-section {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <form class="login-card" action="" method="post">
+    
+    <div class="form-section">
+      <h1>Hello Again</h1>
+      <h2>Login Form</h2>
+      <p id="text">Let's get started with your 30 days trial</p>
+
+      <input type="text" name="Email" placeholder="Email or Username">
+
+      <div class="password-wrapper">
+        <input type="password" id="password" placeholder="Enter password">
+        <button type="button" id="togglePassword">
+          <i class="fa-solid fa-eye"></i>
+        </button>
+      </div>
+
+      <div class="options">
+        <label><input type="checkbox" name="remember"> Remember Me</label>
+        <a href="#">Forgot Password?</a>
+      </div>
+
+     
+      <div class="button-row">
+        <button type="submit" name="Login" class="signin">Sign In</button>
+        <button type="submit" name="Signup" class="signup">Sign Up</button>
+      </div>
+    </div>
+
+  
+    <div class="image-section">
+      <img src="images1.jpeg"
+           alt="Login Illustration">
+    </div>
+  </form>
+
+  <script>
+    const togglePassword = document.querySelector("#togglePassword");
+    const password = document.querySelector("#password");
+    togglePassword.addEventListener("click", function () {
+      const type = password.type === "password" ? "text" : "password";
+      password.type = type;
+      const icon = this.querySelector("i");
+      icon.classList.toggle("fa-eye");
+      icon.classList.toggle("fa-eye-slash");
+    });
+  </script>
+
+</body>
+</html>
